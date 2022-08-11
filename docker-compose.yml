@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  mantenimiento:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      image: docker.pkg.github.com/danny0327/cotizacion-web/cotizacion:latest
+      container_name: cotizacion_dany
+      restart: always
+      networks:
+          - proxy
+          - red_interna
+networks:
+    red_interna:
+        driver: bridge
+    proxy:
+        driver: bridge
+        name: proxy
+        external: true
